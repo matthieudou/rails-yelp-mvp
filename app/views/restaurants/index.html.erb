@@ -1,0 +1,22 @@
+  <div class="page-header">
+    <h1>Restaurants <small>List of all the restaurants</small></h1>
+  </div>
+
+  <div class="well">
+    <div class="list-group">
+      <% @restaurants.each do |resto| %>
+       <div class="list-group-item">
+          <%= link_to resto.name, restaurant_path(resto) %>
+          <div class="pull-right"><%= link_to edit_restaurant_path(resto) do %>
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            <% end %>
+            <%= link_to restaurant_path(resto), method: :delete do %>
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            <% end %></div>
+       </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="well">
+    <%= link_to("New restaurant", new_restaurant_path , class: "btn btn-primary") %>
+  </div>

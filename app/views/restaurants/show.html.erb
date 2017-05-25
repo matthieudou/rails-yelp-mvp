@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h1><%= @restaurant.name %> <small><%= @restaurant.category %></small></h1>
+</div>
+<div class="alert alert-info">
+  <%= @restaurant.address %>
+</div>
+<div class="alert alert-success">
+  <%= @restaurant.phone_number %>
+</div>
+<h3>Comments</h3>
+<% @restaurant.reviews.each do |review| %>
+<div class="panel panelt-default">
+  <%= review.content %>
+  <div class="pull-right">
+    <% review.rating.times do %>
+    <i class="fa fa-star" aria-hidden="true"></i>
+    <% end %>
+    <% (5-review.rating).times do %>
+    <i class="fa fa-star-o" aria-hidden="true"></i>
+    <% end %>
+  </div>
+</div>
+<% end %>
+<%= link_to("New comment", new_restaurant_review_path(@restaurant) , class: "btn btn-warning") %>
